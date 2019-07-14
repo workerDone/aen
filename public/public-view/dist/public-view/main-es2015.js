@@ -201,6 +201,45 @@ AppModule = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
 
 /***/ }),
 
+/***/ "./src/app/common/core/core-http.service.ts":
+/*!**************************************************!*\
+  !*** ./src/app/common/core/core-http.service.ts ***!
+  \**************************************************/
+/*! exports provided: CoreHttpService */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "CoreHttpService", function() { return CoreHttpService; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm2015/http.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
+/* harmony import */ var src_environments_environment__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! src/environments/environment */ "./src/environments/environment.ts");
+
+
+
+
+let CoreHttpService = class CoreHttpService {
+    constructor(http) {
+        this.http = http;
+        this.coreUrl = src_environments_environment__WEBPACK_IMPORTED_MODULE_3__["environment"].url;
+    }
+    get(url) {
+        return this.http.get(this.coreUrl + url);
+    }
+};
+CoreHttpService.ctorParameters = () => [
+    { type: _angular_common_http__WEBPACK_IMPORTED_MODULE_1__["HttpClient"] }
+];
+CoreHttpService = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+    Object(_angular_core__WEBPACK_IMPORTED_MODULE_2__["Injectable"])({ providedIn: 'root' }),
+    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_angular_common_http__WEBPACK_IMPORTED_MODULE_1__["HttpClient"]])
+], CoreHttpService);
+
+
+
+/***/ }),
+
 /***/ "./src/app/users/users.component.scss":
 /*!********************************************!*\
   !*** ./src/app/users/users.component.scss ***!
@@ -224,22 +263,22 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "UsersComponent", function() { return UsersComponent; });
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
-/* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm2015/http.js");
+/* harmony import */ var _common_core_core_http_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../common/core/core-http.service */ "./src/app/common/core/core-http.service.ts");
 
 
 
 let UsersComponent = class UsersComponent {
-    constructor(http) {
-        this.http = http;
+    constructor(coreHttpService) {
+        this.coreHttpService = coreHttpService;
     }
     ngOnInit() {
     }
     click() {
-        this.http.get('https://aen-aen.herokuapp.com/users').subscribe((data) => console.log(data, 333333));
+        this.coreHttpService.get('users').subscribe((data) => console.log(data, 333333));
     }
 };
 UsersComponent.ctorParameters = () => [
-    { type: _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpClient"] }
+    { type: _common_core_core_http_service__WEBPACK_IMPORTED_MODULE_2__["CoreHttpService"] }
 ];
 UsersComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
     Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
@@ -247,7 +286,7 @@ UsersComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         template: __webpack_require__(/*! raw-loader!./users.component.html */ "./node_modules/raw-loader/index.js!./src/app/users/users.component.html"),
         styles: [__webpack_require__(/*! ./users.component.scss */ "./src/app/users/users.component.scss")]
     }),
-    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpClient"]])
+    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_common_core_core_http_service__WEBPACK_IMPORTED_MODULE_2__["CoreHttpService"]])
 ], UsersComponent);
 
 
@@ -268,7 +307,8 @@ __webpack_require__.r(__webpack_exports__);
 // `ng build --prod` replaces `environment.ts` with `environment.prod.ts`.
 // The list of file replacements can be found in `angular.json`.
 const environment = {
-    production: false
+    production: false,
+    url: 'http://localhost:3000/'
 };
 /*
  * For easier debugging in development mode, you can import the following file
