@@ -235,7 +235,7 @@ let UsersComponent = class UsersComponent {
     ngOnInit() {
     }
     click() {
-        this.http.get('http://localhost:3000/users').subscribe((data) => console.log(data, 333333));
+        this.http.get('https://aen-aen.herokuapp.com/users').subscribe((data) => console.log(data, 333333));
     }
 };
 UsersComponent.ctorParameters = () => [

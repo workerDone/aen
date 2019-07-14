@@ -244,7 +244,7 @@ var UsersComponent = /** @class */ (function () {
     UsersComponent.prototype.ngOnInit = function () {
     };
     UsersComponent.prototype.click = function () {
-        this.http.get('http://localhost:3000/users').subscribe(function (data) { return console.log(data, 333333); });
+        this.http.get('https://aen-aen.herokuapp.com/users').subscribe(function (data) { return console.log(data, 333333); });
     };
     UsersComponent.ctorParameters = function () { return [
         { type: _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpClient"] }
