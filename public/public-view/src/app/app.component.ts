@@ -1,3 +1,4 @@
+import { superVisior } from './../../../common/index';
 import { Component } from '@angular/core';
 
 @Component({
@@ -7,4 +8,8 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'public-view';
+  constructor() {
+    const my = new superVisior('Mykola');
+    my.log();
+  }
 }
