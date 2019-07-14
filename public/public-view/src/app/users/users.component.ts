@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { CoreHttpService } from '../common/core/core-http.service';
 
 @Component({
   selector: 'app-users',
@@ -9,12 +9,12 @@ import { HttpClient } from '@angular/common/http';
 export class UsersComponent implements OnInit {
 
   constructor(
-    private http: HttpClient
+    private coreHttpService: CoreHttpService
   ) { }
 
   ngOnInit() {
   }
   click() {
-    this.http.get('https://aen-aen.herokuapp.com/users').subscribe((data) => console.log(data, 333333));
+    this.coreHttpService.get('users').subscribe((data) => console.log(data, 333333));
   }
 }
