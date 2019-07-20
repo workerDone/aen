@@ -1,4 +1,4 @@
 export const environment = {
   production: true,
-  url: 'https://aen-aen.herokuapp.com/'
+  url: 'https://telegram-name.herokuapp.com/'
 };
