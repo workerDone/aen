@@ -27,6 +27,7 @@ app.get('*', (req, res, next) => {
     next();
   }
 });
+
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
 
