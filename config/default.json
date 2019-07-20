@@ -1,6 +1,7 @@
 {
     "HTML": "public/public-view/dist/public-view",
     "IndexHTML": "public/public-view/dist/public-view/index.html",
+    "Root": "/api",
     "Customer": {
       "dbConfig": {
         "host": "localhost",

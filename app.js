@@ -14,21 +14,11 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(cors());
-app.use(
-  express.static(path.join(__dirname, config.get('HTML')))
-);
+app.use(express.static(path.join(__dirname, config.get('HTML'))));
 
-app.get('*', (req, res, next) => {
-  if (req.headers['upgrade-insecure-requests']) {
-    res.sendFile(
-      path.resolve(__dirname,  config.get('IndexHTML'))
-    );
-  } else {
-    next();
-  }
-});
+app.use((req, res, next) => req.url.startsWith(config.get('Root')) ? next() : res.sendFile(path.resolve(__dirname, config.get('IndexHTML'))));
 
-app.use('/', indexRouter);
-app.use('/users', usersRouter);
+app.use('/api/', indexRouter);
+app.use('/api/users', usersRouter);
 
 module.exports = app;
